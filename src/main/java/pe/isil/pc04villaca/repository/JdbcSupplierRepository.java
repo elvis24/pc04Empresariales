@@ -41,16 +41,16 @@ public class JdbcSupplierRepository implements SupplierRepository {
     @Override
     public List<Supplier> findAll() {
         final String sql = "select * from supplier";
-        return jdbcTemplate.query(sql, JdbcSupplierRepository::SupplierRowMapper);
+        return jdbcTemplate.query(sql,JdbcSupplierRepository::SupplierRowMapper);
     }
 
     @Override
     public Supplier findById(String ruc) {
         final String sql= "select * from supplier where ruc=?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{ruc},JdbcSupplierRepository::SupplierRowMapper);
+        return jdbcTemplate.queryForObject(sql, new Object[]{ruc}, JdbcSupplierRepository::SupplierRowMapper);
     }
 
-    private static Supplier SupplierRowMapper(ResultSet resultSet, String ruc) throws SQLException{
+    private static Supplier SupplierRowMapper(ResultSet resultSet, int ruc) throws SQLException{
         String rsRuc = resultSet.getString("ruc");
         String name = resultSet.getString("name");
         String contactEmail = resultSet.getString("contactEmail");
