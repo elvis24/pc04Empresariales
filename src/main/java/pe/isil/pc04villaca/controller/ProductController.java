@@ -16,16 +16,7 @@ public class ProductController {
     @Autowired
     JdbcProductRepository jdbcProductRepository;
 
-    @GetMapping( {"/", "/index"})
-    public String index(){
-        return "index";
-    }
 
-    @GetMapping("/products")
-    public String getAll(Model model){
-        model.addAttribute("products", jdbcProductRepository.findAll());
-        return "product";
-    }
 
     @GetMapping("/products/add")
     public String create(Model model){
