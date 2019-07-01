@@ -18,10 +18,10 @@
 
         <form action="#" method="post"
             th:object="${supplier}"
-            th:action="@{/supplier/update/{ruc} (id=${supplier.ruc})}">
+            th:action="@{/suppliers/update/{ruc} (ruc=${supplier.ruc})}">
 
             <div class="form-group">
-                <label for="name">Nombre</label>
+                <label for="name">Name</label>
                 <input type="text" id="name"
                        class="form-controller"
                        placeholder="ingrese nombre"
@@ -29,15 +29,22 @@
             </div>
 
             <div class="form-group">
-                <label for="price">Precio</label>
-                <input type="text" id="price"
+                <label for="contactEmail">ContactEmail</label>
+                <input type="text" id="contactEmail"
                        class="form-controller"
-                       placeholder="ingrese precio"
-                       th:field="*{price}">
+                       placeholder="ingrese Email contacto"
+                       th:field="*{contactEmail}">
+            </div>
+            <div class="form-group">
+                <label for="contactMobilePhone">ContactMobilePhone</label>
+                <input type="text" id="contactMobilePhone"
+                       class="form-controller"
+                       placeholder="ingrese mobile contacto"
+                       th:field="*{contactMobilePhone}">
             </div>
 
             <button type="submit" class="btn btn-primary">
-                Editar producto
+                Editar Proveedor
             </button>
 
         </form>

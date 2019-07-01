@@ -20,20 +20,20 @@ public class JdbcSupplierRepository implements SupplierRepository {
 
     @Override
     public void create(Supplier supplier) {
-        final String sql ="insert into supplier(ruc, name, contactName, contactMobilePhone) values(?, ?, ?, ?)";
+        final String sql ="insert into supplier(ruc, name, contactEmail, contactMobilePhone) values(?, ?, ?, ?)";
         jdbcTemplate.update(sql, supplier.getRuc(), supplier.getName(), supplier.getContactEmail(), supplier.getContactMobilePhone());
 
     }
 
     @Override
     public void update(Supplier supplier) {
-        final String sql ="insert into supplier(ruc, name, contactName, contactMobilePhone) values(?, ?, ?, ?)";
-        jdbcTemplate.update(sql, supplier.getRuc(), supplier.getName(), supplier.getContactEmail(), supplier.getContactMobilePhone());
+        final String sql ="update supplier set name = ?, contactEmail = ?, contactMobilePhone = ? where ruc = ?";
+        jdbcTemplate.update(sql, supplier.getName(), supplier.getContactEmail(), supplier.getContactMobilePhone(), supplier.getRuc());
     }
 
     @Override
     public void delete(String ruc) {
-        final String sql ="delete supplier where ruc=?";
+        final String sql ="delete supplier where ruc = ?";
         jdbcTemplate.update(sql,ruc);
 
     }
@@ -46,7 +46,7 @@ public class JdbcSupplierRepository implements SupplierRepository {
 
     @Override
     public Supplier findById(String ruc) {
-        final String sql= "select * from supplier where ruc=?";
+        final String sql= "select * from supplier where ruc = ?";
         return jdbcTemplate.queryForObject(sql, new Object[]{ruc}, JdbcSupplierRepository::SupplierRowMapper);
     }
 

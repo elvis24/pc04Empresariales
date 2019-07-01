@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Agregar supplier</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Agregar supplier</h3>
+    <div>
+
+        <form action="#" method="post"
+            th:object="${supplier}"
+            th:action="@{/suppliers/save}"
+            >
+
+            <div class="form-group">
+                <label for="ruc">RUC</label>
+                <input type="text" id="ruc"
+                       class="form-controller"
+                       placeholder="ingrese RUC"
+                       th:field="*{ruc}">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name"
+                       class="form-controller"
+                       placeholder="ingrese nombre"
+                       th:field="*{name}">
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">ContactEmail</label>
+                <input type="text" id="contactEmail"
+                       class="form-controller"
+                       placeholder="ingrese Email contacto"
+                       th:field="*{contactEmail}">
+            </div>
+            <div class="form-group">
+                <label for="contactMobilePhone">ContactMobilePhone</label>
+                <input type="text" id="contactMobilePhone"
+                       class="form-controller"
+                       placeholder="ingrese mobile contacto"
+                       th:field="*{contactMobilePhone}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Agregar Proveedor
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -10,6 +10,7 @@ import pe.isil.pc04villaca.model.Product;
 import pe.isil.pc04villaca.repository.JdbcProductRepository;
 
 
+
 @Controller
 public class ProductController {
 
@@ -17,6 +18,11 @@ public class ProductController {
     JdbcProductRepository jdbcProductRepository;
 
 
+    @GetMapping("/products")
+    public String getAll(Model model){
+        model.addAttribute("products", jdbcProductRepository.findAll());
+        return "product";
+    }
 
     @GetMapping("/products/add")
     public String create(Model model){
@@ -27,14 +33,14 @@ public class ProductController {
     @PostMapping("/products/save")
     public String update(Product product, Model model){
 
-        jdbcProductRepository.update(product);
+        jdbcProductRepository.create(product);
 
         model.addAttribute("products", jdbcProductRepository.findAll());
 
         return "product";
     }
 
-    @GetMapping("/product/edit/{sku}")
+    @GetMapping("/products/edit/{sku}")
     public String getProductForEdit(@PathVariable String  sku,
                                     Model model){
         model.addAttribute("product",
@@ -44,17 +50,17 @@ public class ProductController {
 
     @PostMapping("/products/update/{sku}")
     public String update(@PathVariable String sku,
-                                Product product,
-                                Model model){
+                         Product product,
+                         Model model){
         jdbcProductRepository.update(product);
         model.addAttribute("products",
                 jdbcProductRepository.findAll());
         return "product";
     }
 
-    @GetMapping("/products/delete/{ruc}")
+    @GetMapping("/products/delete/{sku}")
     public String delete(@PathVariable String sku,
-                                Model model){
+                         Model model){
         jdbcProductRepository.delete(sku);
         model.addAttribute("suppliers",
                 jdbcProductRepository.findAll());

@@ -36,14 +36,14 @@ public class SupplierController {
     @PostMapping("/suppliers/save")
     public String update(Supplier supplier, Model model){
 
-        jdbcSupplierRepository.update(supplier);
+        jdbcSupplierRepository.create(supplier);
 
         model.addAttribute("suppliers", jdbcSupplierRepository.findAll());
 
         return "supplier";
     }
 
-    @GetMapping("/supplier/edit/{ruc}")
+    @GetMapping("/suppliers/edit/{ruc}")
     public String getProductForEdit(@PathVariable String  ruc,
                                     Model model){
         model.addAttribute("supplier",

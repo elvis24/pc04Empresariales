@@ -8,18 +8,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Agregar supplier</title>
+    <title>Editar productos</title>
 </head>
 <body>
 
 <div class="container">
-    <h3>Agregar supplier</h3>
+    <h3>Editar producto</h3>
     <div>
 
         <form action="#" method="post"
-            th:object="${supplier}"
-            th:action="@{/supplier/save}"
-            >
+            th:object="${product}"
+            th:action="@{/products/update/{sku} (sku=${product.sku})}">
 
             <div class="form-group">
                 <label for="name">Name</label>
@@ -30,22 +29,22 @@
             </div>
 
             <div class="form-group">
-                <label for="contactEmail">ContactEmail</label>
-                <input type="text" id="contactEmail"
+                <label for="stock">Stock</label>
+                <input type="text" id="stock"
                        class="form-controller"
-                       placeholder="ingrese Email contacto"
-                       th:field="*{contactEmail}">
+                       placeholder="ingrese Stock"
+                       th:field="*{stock}">
             </div>
             <div class="form-group">
-                <label for="contactMobielPhone">ContactMobielPhone</label>
-                <input type="text" id="contactMobielPhone"
+                <label for="price">Price</label>
+                <input type="text" id="price"
                        class="form-controller"
-                       placeholder="ingrese Email contacto"
-                       th:field="*{contactMobielPhone}">
+                       placeholder="ingrese price"
+                       th:field="*{price}">
             </div>
 
             <button type="submit" class="btn btn-primary">
-                Agregar producto
+                Editar Product
             </button>
 
         </form>
