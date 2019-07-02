@@ -62,7 +62,7 @@ public class ProductController {
     public String delete(@PathVariable String sku,
                          Model model){
         jdbcProductRepository.delete(sku);
-        model.addAttribute("suppliers",
+        model.addAttribute("products",
                 jdbcProductRepository.findAll());
         return "product";
     }
